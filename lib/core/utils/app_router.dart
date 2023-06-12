@@ -4,6 +4,7 @@ import '../../features/auth/presentation/views/login_view.dart';
 
 
 abstract class AppRouter {
+  static const kSplashView = '/LoginView';
   static const kLoginView = '/LoginView';
   static const kRegisterView = '/BookDetailsView';
   static const kHomeView = '/SearchView';
