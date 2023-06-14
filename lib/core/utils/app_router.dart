@@ -1,12 +1,13 @@
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/presentation/views/login_view.dart';
+import '../../features/auth/presentation/views/register_view.dart';
 
 
 abstract class AppRouter {
   static const kSplashView = '/LoginView';
-  static const kLoginView = '/LoginView';
-  static const kRegisterView = '/BookDetailsView';
+  static const kLoginView = '/';
+  static const kRegisterView = '/RegisterView';
   static const kHomeView = '/SearchView';
 
   static final router = GoRouter(
@@ -16,8 +17,12 @@ abstract class AppRouter {
       //   builder: (context, state) => const SplashView(),
       // ),
       GoRoute(
-        path: '/',
-        builder: (context, state) => const LoginView(),
+        path: kLoginView,
+        builder: (context, state) =>  const LoginView(),
+      ),
+      GoRoute(
+        path: kRegisterView,
+        builder: (context, state) =>  const RegisterView(),
       ),
       // GoRoute(
       //   path: kBookDetailsView,
