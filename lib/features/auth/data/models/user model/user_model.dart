@@ -10,7 +10,7 @@ class UserModel {
   final String? id;
   final DateTime? createdAt;
   final int? v;
-  final String token;
+  final String? token;
 
   UserModel({
     required this.name,
@@ -22,7 +22,7 @@ class UserModel {
     this.id,
     this.createdAt,
     this.v,
-    required this.token,
+    this.token,
   });
 
   factory UserModel.fromMap(Map<String, dynamic> data) => UserModel(
