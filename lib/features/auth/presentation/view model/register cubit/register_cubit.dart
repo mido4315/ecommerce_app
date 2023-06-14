@@ -1,6 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/features/auth/data/repos/auth_repo_impl.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'register_state.dart';
 

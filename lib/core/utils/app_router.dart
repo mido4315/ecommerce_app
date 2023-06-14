@@ -1,5 +1,3 @@
-import 'package:dio/dio.dart';
-import 'package:ecommerce_app/core/utils/api_service.dart';
 import 'package:ecommerce_app/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:ecommerce_app/features/auth/presentation/view%20model/register%20cubit/register_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
