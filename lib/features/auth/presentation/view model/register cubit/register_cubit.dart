@@ -18,7 +18,6 @@ class RegisterCubit extends Cubit<RegisterState> {
       name: name,
       email: email,
       password: password,
-      phoneNumber: phoneNumber,
     );
     result.fold(
       (failure) => emit(
