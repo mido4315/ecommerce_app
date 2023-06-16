@@ -1,11 +1,12 @@
-import 'package:ecommerce_app/core/utils/app_assets.dart';
+import 'package:ecommerce_app/core/constatns/app_assets.dart';
+import 'package:ecommerce_app/core/constatns/app_styles.dart';
 import 'package:ecommerce_app/core/utils/app_router.dart';
-import 'package:ecommerce_app/core/utils/app_styles.dart';
 import 'package:ecommerce_app/core/widgets/custom_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+
 import '../view model/register cubit/register_cubit.dart';
 import 'widgets/custom_auth_button.dart';
 import 'widgets/custom_text_form_field.dart';
