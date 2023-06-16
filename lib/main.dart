@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/constatns/app_colors.dart';
 import 'package:ecommerce_app/core/utils/app_router.dart';
 import 'package:ecommerce_app/core/utils/service_locator.dart';
 import 'package:ecommerce_app/core/utils/shared_preferences.dart';
@@ -9,7 +10,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupServiceLocator();
   await getIt.get<SharedPrefs>().init();
-  if(getIt.get<SharedPrefs>().getData(key: 'token') != null){
+  if (getIt.get<SharedPrefs>().getData(key: 'token') != null) {
     await getIt.get<AuthRepoImpl>().getUserData();
   }
   runApp(const MyApp());
@@ -29,8 +30,15 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             routerConfig: AppRouter.router,
             title: 'E-Commerce App',
+
             theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: AppColors.background,
+                secondary: AppColors.card,
+                background:AppColors.background,
+                onPrimary: AppColors.text1,
+                onSecondary: AppColors.text1,
+              ),
               useMaterial3: true,
             ),
           );
