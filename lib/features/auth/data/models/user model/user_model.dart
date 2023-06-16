@@ -1,11 +1,10 @@
 import 'dart:convert';
 
 class UserModel {
-  final String name;
+  final String? name;
   final String email;
   final String password;
   final String? address;
-  final String phoneNumber;
   final String? type;
   final String? id;
   final DateTime? createdAt;
@@ -13,11 +12,10 @@ class UserModel {
   final String? token;
 
   UserModel({
-    required this.name,
+    this.name,
     required this.email,
     required this.password,
     this.address,
-    required this.phoneNumber,
     this.type,
     this.id,
     this.createdAt,
@@ -26,11 +24,10 @@ class UserModel {
   });
 
   factory UserModel.fromMap(Map<String, dynamic> data) => UserModel(
-        name: data['name'] as String,
+        name: data['name'] as String?,
         email: data['email'] as String,
         password: data['password'] as String,
         address: data['address'] as String?,
-        phoneNumber: data['phoneNumber'] as String,
         type: data['type'] as String?,
         id: data['_id'] as String?,
         createdAt: data['createdAt'] == null
@@ -45,7 +42,6 @@ class UserModel {
         'email': email,
         'password': password,
         'address': address,
-        'phoneNumber': phoneNumber,
         'type': type,
         '_id': id,
         'createdAt': createdAt?.toIso8601String(),
