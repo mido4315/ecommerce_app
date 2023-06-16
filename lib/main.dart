@@ -1,10 +1,17 @@
 import 'package:ecommerce_app/core/utils/app_router.dart';
 import 'package:ecommerce_app/core/utils/service_locator.dart';
+import 'package:ecommerce_app/core/utils/shared_preferences.dart';
+import 'package:ecommerce_app/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   setupServiceLocator();
+  await getIt.get<SharedPrefs>().init();
+  if(getIt.get<SharedPrefs>().getData(key: 'token') != null){
+    await getIt.get<AuthRepoImpl>().getUserData();
+  }
   runApp(const MyApp());
 }
 
