@@ -56,7 +56,7 @@ class _LoginViewState extends State<LoginView> {
             customSnackBar(context, state.errorMessage);
           }else if(state is LoginSuccess){
             customSnackBar(context, 'done ya kabeeer');
-            context.go(AppRouter.kHomeView);
+            context.go(AppRouter.kLayoutView);
           }
         },
         child: SafeArea(
