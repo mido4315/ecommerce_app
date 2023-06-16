@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_app/features/auth/data/models/user%20model/user_model.dart';
+
 import '../../../../core/errors/failure.dart';
 
 abstract class AuthRepo {
@@ -7,7 +8,10 @@ abstract class AuthRepo {
     required String name,
     required String email,
     required String password,
-    required String phoneNumber,
 });
-  Future<Either<Failure, UserModel>> userLogin();
+  Future<Either<Failure, UserModel>> userLogin({
+    required String email,
+    required String password,
+});
+  Future<void> getUserData();
 }
