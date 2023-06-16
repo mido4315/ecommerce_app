@@ -5,59 +5,87 @@ import 'package:flutter/material.dart';
 part 'layout_state.dart';
 
 class LayoutCubit extends Cubit<LayoutState> {
-  LayoutCubit() : super(LayoutInitial());
+  LayoutCubit()
+      : isCartItems = false,
+        super(LayoutInitial());
 
-  final List<Widget> layoutPages = [
-    const HomeView(),
-    const Center(
-      child: Text(
-        'test 2',
-        style: TextStyle(fontSize: 40),
-      ),
-    ),
-    const Center(
-      child: Text(
-        'test 3',
-        style: TextStyle(fontSize: 40),
-      ),
-    ),
-    const Center(
-      child: Text(
-        'test 4',
-        style: TextStyle(fontSize: 40),
-      ),
-    ),
-  ];
-  final List<BottomNavigationBarItem> bottomNavigationBarItems = const [
-    BottomNavigationBarItem(
-      label: '',
-      icon: Icon(
-        Icons.home,
-      ),
-    ),
-    BottomNavigationBarItem(
-      label: '',
-      icon: Icon(
-        Icons.category,
-      ),
-    ),
-    BottomNavigationBarItem(
-      label: '',
-      icon: Icon(
-        Icons.shopping_cart,
-      ),
-    ),
-    BottomNavigationBarItem(
-      label: '',
-      icon: Icon(
-        Icons.person,
-      ),
-    ),
-  ];
+  final bool isCartItems;
+
   int bottomNavigationBarCurrentIndex = 0;
 
   void changeTap(newIndex) {
     bottomNavigationBarCurrentIndex = newIndex;
     emit(LayoutChangeTap());
   }
+
+  final List<IconData> listOfIcons = [
+    Icons.home_rounded,
+    Icons.favorite_rounded,
+    Icons.settings_rounded,
+    Icons.person_rounded,
+  ];
+
+  final List<String> listOfStrings = [
+    'Home',
+    'Favorite',
+    'Settings',
+    'Account',
+  ];
+
+  final List<Widget> layoutPages = [
+    const HomeView(),
+    const Center(
+      child: Text(
+        'profile',
+        style: TextStyle(fontSize: 40),
+      ),
+    ),
+    const Center(
+      child: Text(
+        'cart',
+        style: TextStyle(fontSize: 40),
+      ),
+    ),
+    const Center(
+      child: Text(
+        'cart',
+        style: TextStyle(fontSize: 40),
+      ),
+    ),
+  ];
+// List<BottomNavigationBarItem> get bottomNavigationBarItems {
+//   return [
+//     const BottomNavigationBarItem(
+//       label: 'Home',
+//       icon: Icon(
+//         Icons.home,
+//       ),
+//     ),
+//     // BottomNavigationBarItem(
+//     //   label: '',
+//     //   icon: Icon(
+//     //     Icons.category,
+//     //   ),
+//     // ),
+//     const BottomNavigationBarItem(
+//       label: 'Profile',
+//       icon: Icon(
+//         Icons.person,
+//       ),
+//     ),
+//     BottomNavigationBarItem(
+//       label: 'Cart',
+//       icon: isCartItems
+//           ? const Badge(
+//               label: Text('2'),
+//               child: Icon(
+//                 Icons.shopping_cart,
+//               ),
+//             )
+//           : const Icon(
+//               Icons.shopping_cart,
+//             ),
+//     ),
+//   ];
+// }
 }
