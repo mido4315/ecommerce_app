@@ -1,6 +1,8 @@
-import 'package:bloc/bloc.dart';
-import 'package:ecommerce_app/features/layout/presentaion/views/home_view.dart';
+import 'package:ecommerce_app/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../profile/presentation/views/profile_view.dart';
 
 part 'layout_state.dart';
 
@@ -20,38 +22,33 @@ class LayoutCubit extends Cubit<LayoutState> {
 
   final List<IconData> listOfIcons = [
     Icons.home_rounded,
-    Icons.favorite_rounded,
+    Icons.shopping_cart,
     Icons.settings_rounded,
     Icons.person_rounded,
   ];
 
   final List<String> listOfStrings = [
     'Home',
-    'Favorite',
+    'Cart',
     'Settings',
-    'Account',
+    'Profile',
   ];
 
   final List<Widget> layoutPages = [
     const HomeView(),
     const Center(
       child: Text(
-        'profile',
+        'Cart',
         style: TextStyle(fontSize: 40),
       ),
     ),
     const Center(
       child: Text(
-        'cart',
+        'Settings',
         style: TextStyle(fontSize: 40),
       ),
     ),
-    const Center(
-      child: Text(
-        'cart',
-        style: TextStyle(fontSize: 40),
-      ),
-    ),
+    const ProfileView(),
   ];
 // List<BottomNavigationBarItem> get bottomNavigationBarItems {
 //   return [
