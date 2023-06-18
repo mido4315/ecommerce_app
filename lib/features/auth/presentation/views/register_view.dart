@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/core/constatns/app_assets.dart';
-import 'package:ecommerce_app/core/constatns/app_styles.dart';
+import 'package:ecommerce_app/core/constants/app_assets.dart';
+import 'package:ecommerce_app/core/constants/app_styles.dart';
 import 'package:ecommerce_app/core/utils/app_router.dart';
 import 'package:ecommerce_app/core/widgets/custom_snack_bar.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +30,7 @@ class _RegisterViewState extends State<RegisterView> {
 
   final _passwordController = TextEditingController();
 
-  final _phoneNumberController = TextEditingController();
+  final _addressController = TextEditingController();
 
   // dispose text editing controllers
   @override
@@ -39,7 +39,7 @@ class _RegisterViewState extends State<RegisterView> {
     _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
-    _phoneNumberController.dispose();
+    _addressController.dispose();
   }
 
   // sign user in method
@@ -49,7 +49,7 @@ class _RegisterViewState extends State<RegisterView> {
         name: _nameController.text,
         email: _emailController.text,
         password: _passwordController.text,
-        phoneNumber: _phoneNumberController.text,
+        address: _addressController.text,
       );
     }
   }
@@ -57,8 +57,6 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.grey[300],
       body: BlocListener<RegisterCubit, RegisterState>(
         listener: (context, state) {
           if (state is RegisterFailure) {
@@ -119,8 +117,8 @@ class _RegisterViewState extends State<RegisterView> {
 
                         SizedBox(height: 10.h),
                         CustomTextFormField(
-                          controller: _phoneNumberController,
-                          hintText: 'Phone number',
+                          controller: _addressController,
+                          hintText: 'Address',
                           obscureText: false,
                         ),
                       ],
