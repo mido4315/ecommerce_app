@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/core/constatns/app_colors.dart';
+import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:ecommerce_app/core/utils/app_router.dart';
 import 'package:ecommerce_app/core/utils/service_locator.dart';
 import 'package:ecommerce_app/core/utils/shared_preferences.dart';
