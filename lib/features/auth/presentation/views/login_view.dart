@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/core/constatns/app_assets.dart';
-import 'package:ecommerce_app/core/constatns/app_styles.dart';
+import 'package:ecommerce_app/core/constants/app_assets.dart';
+import 'package:ecommerce_app/core/constants/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -49,7 +49,6 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
       body: BlocListener<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginFailure) {
@@ -138,10 +137,9 @@ class _LoginViewState extends State<LoginView> {
                     padding: EdgeInsets.symmetric(horizontal: 25.0.w),
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: Divider(
                             thickness: 0.5,
-                            color: Colors.grey[400],
                           ),
                         ),
                         Padding(
@@ -151,10 +149,9 @@ class _LoginViewState extends State<LoginView> {
                             style: AppStyles.textStyle18,
                           ),
                         ),
-                        Expanded(
+                        const Expanded(
                           child: Divider(
                             thickness: 0.5,
-                            color: Colors.grey[400],
                           ),
                         ),
                       ],
