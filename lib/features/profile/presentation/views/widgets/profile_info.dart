@@ -2,7 +2,6 @@ import 'package:ecommerce_app/core/utils/service_locator.dart';
 import 'package:ecommerce_app/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get_it/get_it.dart';
 
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_styles.dart';

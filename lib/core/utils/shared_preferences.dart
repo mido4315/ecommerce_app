@@ -14,23 +14,18 @@ class SharedPrefs {
       case String:
         await _sharedPreferences.setString(key, value);
         return true;
-        break;
       case bool:
         await _sharedPreferences.setBool(key, value);
         return true;
-        break;
       case int:
         await _sharedPreferences.setInt(key, value);
         return true;
-        break;
       case double:
         await _sharedPreferences.setDouble(key, value);
         return true;
-        break;
       case const (List<String>):
         await _sharedPreferences.setStringList(key, value);
         return true;
-        break;
     }
     return false;
   }
