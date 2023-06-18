@@ -20,12 +20,14 @@ class AuthRepoImpl implements AuthRepo {
     required String name,
     required String email,
     required String password,
+    required String address,
   }) async {
     try {
       UserModel data = UserModel(
         name: name,
         email: email,
         password: password,
+        address: address,
       );
       var result =
           await apiService.post(path: '/api/signup', data: data.toJson());
