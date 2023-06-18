@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
 import '../../features/layout/presentaion/view model/layout_cubit/layout_cubit.dart';
-import '../../features/layout/presentaion/views/home_view.dart';
+import '../../features/home/presentation/views/home_view.dart';
 import '../../features/layout/presentaion/views/layout_view.dart';
 import 'service_locator.dart';
 
