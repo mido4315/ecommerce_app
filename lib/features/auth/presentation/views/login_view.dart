@@ -6,7 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/app_router.dart';
+import '../../../../core/utils/service_locator.dart';
 import '../../../../core/widgets/custom_snack_bar.dart';
+import '../../data/repos/auth_repo_impl.dart';
 import '../view model/login cubit/login_cubit.dart';
 import 'widgets/custom_auth_button.dart';
 import 'widgets/custom_text_form_field.dart';
@@ -53,9 +55,13 @@ class _LoginViewState extends State<LoginView> {
         listener: (context, state) {
           if (state is LoginFailure) {
             customSnackBar(context, state.errorMessage);
-          }else if(state is LoginSuccess){
+          } else if (state is LoginSuccess) {
             customSnackBar(context, 'done ya kabeeer');
-            context.go(AppRouter.kLayoutView);
+            if (getIt.get<AuthRepoImpl>().myUserModel.type == 'user') {
+              context.go(AppRouter.kLayoutView);
+            } else {
+              context.go(AppRouter.kAdminView);
+            }
           }
         },
         child: SafeArea(
