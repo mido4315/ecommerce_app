@@ -5,10 +5,12 @@ import 'package:ecommerce_app/features/auth/presentation/view%20model/register%2
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/admin/admin panel/presentation/view model/admin cubit/admin_cubit.dart';
+import '../../features/admin/admin panel/presentation/views/admin_view.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
-import '../../features/layout/presentaion/view model/layout_cubit/layout_cubit.dart';
 import '../../features/home/presentation/views/home_view.dart';
+import '../../features/layout/presentaion/view model/layout_cubit/layout_cubit.dart';
 import '../../features/layout/presentaion/views/layout_view.dart';
 import 'service_locator.dart';
 
@@ -18,6 +20,8 @@ abstract class AppRouter {
   static const kRegisterView = '/RegisterView';
   static const kHomeView = '/HomeView';
   static const kLayoutView = '/LayoutView';
+  static const kAdminView = '/AdminView';
+
 
   static final router = GoRouter(
     routes: [
@@ -34,9 +38,15 @@ abstract class AppRouter {
           builder: (context, state) {
             String? token = getIt.get<SharedPrefs>().getData(key: 'token');
             if (token != null) {
+              if(getIt.get<AuthRepoImpl>().myUserModel.type == 'user'){
+                return BlocProvider(
+                  create: (context) => LayoutCubit(),
+                  child: const LayoutView(),
+                );
+              }
               return BlocProvider(
-                create: (context) => LayoutCubit(),
-                child: const LayoutView(),
+                create: (context) => AdminCubit(),
+                child: const AdminView(),
               );
             }
             return BlocProvider(
@@ -76,6 +86,13 @@ abstract class AppRouter {
       GoRoute(
         path: kHomeView,
         builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
+        path: kAdminView,
+        builder: (context, state) => BlocProvider(
+          create: (context) => AdminCubit(),
+          child: const AdminView(),
+        ),
       ),
       // GoRoute(
       //   path: kBookDetailsView,
