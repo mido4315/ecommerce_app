@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../core/constants/app_styles.dart';
+import '../../../../../widgets/simpe_app_bar.dart';
 import '../view model/admin cubit/admin_cubit.dart';
 import 'widgets/custom admin button navigation bar/custom_admin_bottom_navigation_bar.dart';
 
@@ -14,15 +13,7 @@ class AdminView extends StatelessWidget {
     return BlocBuilder<AdminCubit, AdminState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            title: Text(
-              'Admin Panel',
-              style: AppStyles.textStyleTitle30,
-            ),
-            centerTitle: true,
-          ),
+          appBar:  simpleAppBar(title: 'Admin Panel'),
           bottomNavigationBar: CustomAdminBottomNavigationBar(
             cubit: cubit,
             listOfIcons: cubit.listOfIcons,
