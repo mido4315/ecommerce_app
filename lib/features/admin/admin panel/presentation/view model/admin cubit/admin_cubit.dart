@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../posts/presentation/views/posts_view.dart';
+
 part 'admin_state.dart';
 
 class AdminCubit extends Cubit<AdminState> {
@@ -27,12 +29,7 @@ class AdminCubit extends Cubit<AdminState> {
     'Items',
   ];
   final List<Widget> layoutPages = [
-    const Center(
-      child: Text(
-        'Posts Page',
-        style: TextStyle(fontSize: 40),
-      ),
-    ),
+    const PostsView(),
     const Center(
       child: Text(
         'Analytics Page',
