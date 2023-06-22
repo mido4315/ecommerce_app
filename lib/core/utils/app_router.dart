@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/admin/admin panel/presentation/view model/admin cubit/admin_cubit.dart';
 import '../../features/admin/admin panel/presentation/views/admin_view.dart';
+import '../../features/admin/posts/presentation/views/add_new_product.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
@@ -21,6 +22,7 @@ abstract class AppRouter {
   static const kHomeView = '/HomeView';
   static const kLayoutView = '/LayoutView';
   static const kAdminView = '/AdminView';
+  static const kAddNewProduct = '/AddNewProduct';
 
 
   static final router = GoRouter(
@@ -93,6 +95,10 @@ abstract class AppRouter {
           create: (context) => AdminCubit(),
           child: const AdminView(),
         ),
+      ),
+      GoRoute(
+        path: kAddNewProduct,
+        builder: (context, state) => const AddNewProduct(),
       ),
       // GoRoute(
       //   path: kBookDetailsView,
