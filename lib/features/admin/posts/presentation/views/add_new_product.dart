@@ -1,8 +1,12 @@
+import 'dart:io';
+
+import 'package:ecommerce_app/core/constants/app_styles.dart';
+import 'package:ecommerce_app/core/widgets/pick_images.dart';
+import 'package:ecommerce_app/widgets/custom_images_slider.dart';
 import 'package:ecommerce_app/widgets/custom_text_form_field.dart';
 import 'package:ecommerce_app/widgets/simpe_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'widgets/custom_dotted_box.dart';
 
 class AddNewProduct extends StatefulWidget {
@@ -32,6 +36,18 @@ class _AddNewProductState extends State<AddNewProduct> {
     _quantityController.dispose();
   }
 
+  // initialize images list
+  List<File> images = [];
+
+  // create image pick method
+
+  void pickProductImage() async {
+    List<File> result = await pickImages();
+    setState(() {
+      images = result;
+    });
+  }
+
   final List<String> categories = [
     'Hard Drives',
     'RAM',
@@ -43,6 +59,7 @@ class _AddNewProductState extends State<AddNewProduct> {
     'Power Supplies',
   ];
   String? selected = 'Hard Drives';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +71,21 @@ class _AddNewProductState extends State<AddNewProduct> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const CustomDottedBox(),
+              images.isNotEmpty
+                  ? SizedBox(
+                width: double.infinity,
+                height: 165.h,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 20.0),
+                      child: CustomImagesSlider(
+                          isFile: true,
+                          images: images,
+                        ),
+                    ),
+                  )
+                  : CustomDottedBox(
+                      onTap: pickProductImage,
+                    ),
               CustomTextFormField(
                 controller: _nameController,
                 hintText: 'Name',
@@ -65,7 +96,7 @@ class _AddNewProductState extends State<AddNewProduct> {
                 controller: _descriptionController,
                 hintText: 'Description',
                 obscureText: false,
-                maxLines: 3,
+                maxLines: 2,
               ),
               SizedBox(height: 15.h),
               CustomTextFormField(
@@ -80,18 +111,53 @@ class _AddNewProductState extends State<AddNewProduct> {
                 obscureText: false,
               ),
               SizedBox(height: 15.h),
-              DropdownButton(
-                borderRadius: BorderRadius.circular(20),
-                icon: const Icon(Icons.keyboard_arrow_down),
-                items: categories.map((e) {
-                  return DropdownMenuItem(value: e,child: Text(e),);
-                }).toList(),
-                value: selected,
-                onChanged: (value) {
-                  setState(() {
-                    selected = value;
-                  });
-                },
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: 25.0, right: 25, bottom: 18),
+                child: Card(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Category',
+                        style: AppStyles.textStyleTitle22,
+                      ),
+                      DropdownButton(
+                        alignment: Alignment.center,
+                        borderRadius: BorderRadius.circular(20),
+                        icon: const Icon(Icons.keyboard_arrow_down),
+                        items: categories.map((e) {
+                          return DropdownMenuItem(
+                            value: e,
+                            alignment: Alignment.center,
+                            child: Text(
+                              e,
+                              textAlign: TextAlign.center,
+                            ),
+                          );
+                        }).toList(),
+                        value: selected,
+                        onChanged: (value) {
+                          setState(() {
+                            selected = value;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 300.w,
+                height: 60.h,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    'add',
+                    style: AppStyles.textStyleTitle30,
+                  ),
+                ),
               ),
             ],
           ),
