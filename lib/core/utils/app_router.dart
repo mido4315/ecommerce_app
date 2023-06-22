@@ -7,12 +7,15 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/admin/admin panel/presentation/view model/admin cubit/admin_cubit.dart';
 import '../../features/admin/admin panel/presentation/views/admin_view.dart';
+import '../../features/admin/posts/data/repos/posts_repo_impl.dart';
+import '../../features/admin/posts/presentation/view model/add new product cubit/add_new_product_cubit.dart';
 import '../../features/admin/posts/presentation/views/add_new_product.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/layout/presentaion/view model/layout_cubit/layout_cubit.dart';
 import '../../features/layout/presentaion/views/layout_view.dart';
+import 'api_service.dart';
 import 'service_locator.dart';
 
 abstract class AppRouter {
@@ -23,7 +26,6 @@ abstract class AppRouter {
   static const kLayoutView = '/LayoutView';
   static const kAdminView = '/AdminView';
   static const kAddNewProduct = '/AddNewProduct';
-
 
   static final router = GoRouter(
     routes: [
@@ -40,7 +42,7 @@ abstract class AppRouter {
           builder: (context, state) {
             String? token = getIt.get<SharedPrefs>().getData(key: 'token');
             if (token != null) {
-              if(getIt.get<AuthRepoImpl>().myUserModel.type == 'user'){
+              if (getIt.get<AuthRepoImpl>().myUserModel.type == 'user') {
                 return BlocProvider(
                   create: (context) => LayoutCubit(),
                   child: const LayoutView(),
@@ -98,7 +100,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kAddNewProduct,
-        builder: (context, state) => const AddNewProduct(),
+        builder: (context, state) => BlocProvider(
+          create: (context) =>
+              AddNewProductCubit(PostsRepoImpl(getIt.get<APIService>())),
+          child: const AddNewProduct(),
+        ),
       ),
       // GoRoute(
       //   path: kBookDetailsView,
