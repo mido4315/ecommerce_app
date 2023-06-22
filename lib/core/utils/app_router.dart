@@ -98,11 +98,12 @@ abstract class AppRouter {
           child: const AdminView(),
         ),
       ),
+
       GoRoute(
         path: kAddNewProduct,
         builder: (context, state) => BlocProvider(
           create: (context) =>
-              AddNewProductCubit(PostsRepoImpl(getIt.get<APIService>())),
+              PostsCubit(PostsRepoImpl(getIt.get<APIService>())),
           child: const AddNewProduct(),
         ),
       ),

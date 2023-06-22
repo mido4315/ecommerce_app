@@ -64,11 +64,11 @@ class _AddNewProductState extends State<AddNewProduct> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AddNewProductCubit, AddNewProductState>(
+    return BlocListener<PostsCubit, PostsState>(
       listener: (context, state) {
-        if (state is AddNewProductFailure) {
+        if (state is PostsFailure) {
           customSnackBar(context, state.errorMessage);
-        } else if (state is AddNewProductSuccess) {
+        } else if (state is PostsSuccess) {
           customSnackBar(context, 'Product added successfully');
         }
       },
@@ -165,7 +165,7 @@ class _AddNewProductState extends State<AddNewProduct> {
                     onPressed: () {
                       if (_addNewProductKey.currentState!.validate() &&
                           images.isNotEmpty) {
-                        BlocProvider.of<AddNewProductCubit>(context).addProduct(
+                        BlocProvider.of<PostsCubit>(context).addProduct(
                           name: _nameController.text,
                           description: _descriptionController.text,
                           price: double.parse(_priceController.text),

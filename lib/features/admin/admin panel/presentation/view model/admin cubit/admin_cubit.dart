@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../../core/utils/api_service.dart';
+import '../../../../../../core/utils/service_locator.dart';
+import '../../../../posts/data/repos/posts_repo_impl.dart';
+import '../../../../posts/presentation/view model/add new product cubit/add_new_product_cubit.dart';
+import '../../../../posts/presentation/views/add_new_product.dart';
 import '../../../../posts/presentation/views/posts_view.dart';
 
 part 'admin_state.dart';
@@ -29,7 +34,11 @@ class AdminCubit extends Cubit<AdminState> {
     'Items',
   ];
   final List<Widget> layoutPages = [
-    const PostsView(),
+    BlocProvider(
+      create: (context) =>
+          PostsCubit(PostsRepoImpl(getIt.get<APIService>())),
+      child: const PostsView(),
+    ),
     const Center(
       child: Text(
         'Analytics Page',

@@ -13,13 +13,24 @@ class PostsView extends StatelessWidget {
       appBar: simpleAppBar(title: 'Posts'),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.push(AppRouter.kAddNewProduct);
         },
         backgroundColor: AppColors.buttonLight,
         child: const Icon(
           Icons.add,
           size: 30,
         ),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              context.push(AppRouter.kAddNewProduct);
+            },
+            child: Text('test'),
+          ),
+        ],
       ),
     );
   }

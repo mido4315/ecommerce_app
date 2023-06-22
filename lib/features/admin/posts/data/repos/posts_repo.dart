@@ -14,4 +14,6 @@ abstract class PostsRepo {
     required String category,
     required List<File> images,
   });
+
+  Future<Either<Failure, List<ProductModel>>> getProducts();
 }

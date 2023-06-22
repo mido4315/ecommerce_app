@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloudinary_public/cloudinary_public.dart';
@@ -14,6 +15,15 @@ class PostsRepoImpl implements PostsRepo {
   PostsRepoImpl(this.apiService);
 
   APIService apiService;
+
+  // get the admin token
+  final String token = getIt.get<AuthRepoImpl>().myUserModel.token!;
+
+  // create headers
+  Map<String, String> get headers => {
+        'Content-Type': 'application/json; charset=utf-8',
+        'my-souq-auth-token': token
+      };
 
   @override
   Future<Either<Failure, ProductModel>> addProduct({
@@ -48,15 +58,6 @@ class PostsRepoImpl implements PostsRepo {
         images: productImages,
       );
 
-      // get the admin token
-      final String token = getIt.get<AuthRepoImpl>().myUserModel.token!;
-
-      // create headers
-      final Map<String, String> headers = {
-        'Content-Type': 'application/json; charset=utf-8',
-        'my-souq-auth-token': token
-      };
-
       // make a post request to the server
       Map<String, dynamic> result = await apiService.post(
         path: '/admin/add-product',
@@ -64,6 +65,30 @@ class PostsRepoImpl implements PostsRepo {
         data: productModel.toJson(),
       );
       return Right(ProductModel.fromMap(result));
+    } catch (e) {
+      if (e is DioException) {
+        return Left(
+          ServerFailure.fromDioError(e),
+        );
+      }
+      return left(ServerFailure(
+        e.toString(),
+      ));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProductModel>>> getProducts() async {
+    List<ProductModel> productList = [];
+    try {
+      var result = await apiService.get(
+        path: '/admin/get-products',
+        headers: headers,
+      );
+      for (var i = 0; i < json.decode(json.encode(result)).length; i++) {
+        productList.add(ProductModel.fromMap(result));
+      }
+      return Right(productList);
     } catch (e) {
       if (e is DioException) {
         return Left(
