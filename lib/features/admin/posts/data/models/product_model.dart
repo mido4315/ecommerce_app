@@ -17,8 +17,8 @@ class ProductModel {
     required this.quantity,
     required this.category,
     required this.images,
-    required id,
-    required userId,
+     id,
+     userId,
   });
 
   factory ProductModel.fromMap(Map<String, dynamic> json) {
@@ -26,7 +26,7 @@ class ProductModel {
       name: json["name"],
       description: json["description"],
       price: double.parse(json["price"]),
-      quantity: int.parse(json["quantity"]),
+      quantity: int.parse(json["qty"]),
       category: json["category"],
       images: List<String>.from(json["images"]),
       id: json["_id"],
@@ -39,7 +39,7 @@ class ProductModel {
       "name": name,
       "description": description,
       "price": price,
-      "quantity": quantity,
+      "qty": quantity,
       "category": category,
       "images": jsonEncode(images),
       "id": id,
