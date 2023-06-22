@@ -6,6 +6,7 @@ import 'package:ecommerce_app/core/utils/api_service.dart';
 import 'package:ecommerce_app/core/utils/service_locator.dart';
 import 'package:ecommerce_app/core/utils/shared_preferences.dart';
 import 'package:ecommerce_app/features/auth/data/models/user%20model/user_model.dart';
+import 'package:flutter/material.dart';
 
 import 'auth_repo.dart';
 
@@ -104,7 +105,7 @@ class AuthRepoImpl implements AuthRepo {
         myUserModel = UserModel.fromMap(userResult);
       }
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
   }
 }
