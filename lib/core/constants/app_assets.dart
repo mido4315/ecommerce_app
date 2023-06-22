@@ -8,4 +8,5 @@ class AppAssets {
     'https://m.media-amazon.com/images/I/71yMGkX8M9L._SX3000_.jpg',
     'https://m.media-amazon.com/images/I/71LH0z75dSL._SX3000_.jpg',
   ];
+
 }
