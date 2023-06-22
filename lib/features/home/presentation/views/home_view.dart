@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'widgets/custom_images_slider.dart';
+import '../../../../widgets/custom_images_slider.dart';
 import 'widgets/home_search_bar.dart';
 
 class HomeView extends StatelessWidget {
@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             HomeSearchBar(),
-            CustomImagesSlider(),
+            CustomImagesSlider(isFile: false,),
           ],
         ),
       ),

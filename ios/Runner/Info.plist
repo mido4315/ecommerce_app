@@ -47,5 +47,10 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+    <array>
+       <string>fetch</string>
+       <string>This app would like to access your photos</string>
+    </array>
 </dict>
 </plist>
