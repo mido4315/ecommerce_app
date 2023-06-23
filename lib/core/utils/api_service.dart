@@ -23,6 +23,19 @@ class APIService {
     return response.data;
   }
 
+  Future<List<dynamic>>  getList({
+    required String path,
+    Map<String, dynamic>? headers,
+  }) async {
+    Response response = await _dio.get(
+      '$_baseUrl$path',
+      options: Options(
+        headers: headers,
+      ),
+    );
+    return response.data;
+  }
+
   Future<Map<String, dynamic>> post({
     Map<String, dynamic>? headers,
     required String path,
@@ -37,6 +50,7 @@ class APIService {
     );
     return response.data;
   }
+
 
   Future isValidToken({
     required Map<String, dynamic> headers,
