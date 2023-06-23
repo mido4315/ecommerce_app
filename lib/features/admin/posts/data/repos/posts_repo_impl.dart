@@ -26,6 +26,32 @@ class PostsRepoImpl implements PostsRepo {
       };
 
   @override
+  Future<Either<Failure, List<ProductModel>>> getProducts() async {
+    List<ProductModel> productsList = [];
+
+    try {
+      // make a post request to the server
+      List<dynamic> result = await apiService.getList(
+        path: '/admin/get-products',
+        headers: headers,
+      );
+      for (int i = 0; i < result.length; i++) {
+        productsList.add(ProductModel.fromMap(result[i]));
+      }
+      return Right(productsList);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(
+          ServerFailure.fromDioError(e),
+        );
+      }
+      return left(ServerFailure(
+        e.toString(),
+      ));
+    }
+  }
+
+  @override
   Future<Either<Failure, ProductModel>> addProduct({
     required String name,
     required String description,
@@ -64,31 +90,8 @@ class PostsRepoImpl implements PostsRepo {
         headers: headers,
         data: productModel.toJson(),
       );
-      return Right(ProductModel.fromMap(result));
-    } catch (e) {
-      if (e is DioException) {
-        return Left(
-          ServerFailure.fromDioError(e),
-        );
-      }
-      return left(ServerFailure(
-        e.toString(),
-      ));
-    }
-  }
 
-  @override
-  Future<Either<Failure, List<ProductModel>>> getProducts() async {
-    List<ProductModel> productList = [];
-    try {
-      var result = await apiService.get(
-        path: '/admin/get-products',
-        headers: headers,
-      );
-      for (var i = 0; i < json.decode(json.encode(result)).length; i++) {
-        productList.add(ProductModel.fromMap(result));
-      }
-      return Right(productList);
+      return Right(ProductModel.fromMap(result));
     } catch (e) {
       if (e is DioException) {
         return Left(
