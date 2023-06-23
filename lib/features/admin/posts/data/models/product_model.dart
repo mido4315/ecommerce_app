@@ -25,8 +25,8 @@ class ProductModel {
     return ProductModel(
       name: json["name"],
       description: json["description"],
-      price: double.parse(json["price"]),
-      quantity: int.parse(json["qty"]),
+      price: double.parse(json["price"].toString()),
+      quantity: int.parse(json["qty"].toString()),
       category: json["category"],
       images: List<String>.from(json["images"]),
       id: json["_id"],
