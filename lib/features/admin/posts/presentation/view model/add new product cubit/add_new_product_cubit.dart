@@ -40,12 +40,13 @@ class PostsCubit extends Cubit<PostsState> {
     required List<File> images,
   }) async {
     var result = await postsRepo.addProduct(
-        name: name,
-        description: description,
-        price: price,
-        quantity: quantity,
-        category: category,
-        images: images);
+      name: name,
+      description: description,
+      price: price,
+      quantity: quantity,
+      category: category,
+      images: images,
+    );
     result.fold(
       (failure) => emit(
         PostsFailure(failure.errorMessage),
