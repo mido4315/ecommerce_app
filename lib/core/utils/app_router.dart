@@ -12,6 +12,7 @@ import '../../features/admin/posts/presentation/view model/add new product cubit
 import '../../features/admin/posts/presentation/views/add_new_product.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
+import '../../features/categories details/presentation/views/categories_details_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/layout/presentaion/view model/layout_cubit/layout_cubit.dart';
 import '../../features/layout/presentaion/views/layout_view.dart';
@@ -26,6 +27,8 @@ abstract class AppRouter {
   static const kLayoutView = '/LayoutView';
   static const kAdminView = '/AdminView';
   static const kAddNewProduct = '/AddNewProduct';
+  static const kCategoriesDetailsView =
+      '/kCategoriesDetailsView/:categoryTitle';
 
   static final router = GoRouter(
     routes: [
@@ -103,8 +106,14 @@ abstract class AppRouter {
         path: kAddNewProduct,
         builder: (context, state) => BlocProvider(
           create: (context) =>
-              PostsCubit(PostsRepoImpl(getIt.get<APIService>())),
+              AddNewProductCubit(PostsRepoImpl(getIt.get<APIService>())),
           child: const AddNewProduct(),
+        ),
+      ),
+      GoRoute(
+        path: kCategoriesDetailsView,
+        builder: (context, state) => CategoriesDetailsView(
+          categoryTitle: state.pathParameters['categoryTitle']!,
         ),
       ),
       // GoRoute(
