@@ -1,11 +1,12 @@
 part of 'add_new_product_cubit.dart';
 
-abstract class PostsState {}
+abstract class AddNewProductState {}
 
-class PostsInitial extends PostsState {}
+class AddNewProductInitial extends AddNewProductState {}
 
-class PostsSuccess extends PostsState {}
-class PostsFailure extends PostsState {
-  PostsFailure(this.errorMessage);
+class AddNewProductLoading extends AddNewProductState {}
+class AddNewProductSuccess extends AddNewProductState {}
+class AddNewProductFailure extends AddNewProductState {
+  AddNewProductFailure(this.errorMessage);
   final String errorMessage;
 }
