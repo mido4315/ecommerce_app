@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SingleProduct extends StatelessWidget {
   const SingleProduct({Key? key, required this.image}) : super(key: key);
@@ -13,13 +14,12 @@ class SingleProduct extends StatelessWidget {
          decoration: BoxDecoration(
            border: Border.all(
              color: Colors.black12,
-             width: 1.5
+             width: 2.5.w
            ),
            borderRadius: BorderRadius.circular(5),
            color: Colors.white,
          ),
         child: Container(
-          width: 180,
           padding: const EdgeInsets.all(5),
           child: Image.network(
             image,
