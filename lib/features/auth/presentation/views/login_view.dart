@@ -8,10 +8,10 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/utils/app_router.dart';
 import '../../../../core/utils/service_locator.dart';
 import '../../../../core/widgets/custom_snack_bar.dart';
+import '../../../../widgets/custom_text_form_field.dart';
 import '../../data/repos/auth_repo_impl.dart';
 import '../view model/login cubit/login_cubit.dart';
 import 'widgets/custom_auth_button.dart';
-import '../../../../widgets/custom_text_form_field.dart';
 import 'widgets/square_tile.dart';
 
 class LoginView extends StatefulWidget {

@@ -1,3 +1,7 @@
+import 'package:ecommerce_app/core/utils/api_service.dart';
+import 'package:ecommerce_app/core/utils/service_locator.dart';
+import 'package:ecommerce_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:ecommerce_app/features/home/presentation/view%20model/home%20cubit/home_cubit.dart';
 import 'package:ecommerce_app/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +39,10 @@ class LayoutCubit extends Cubit<LayoutState> {
   ];
 
   final List<Widget> layoutPages = [
-    const HomeView(),
+    BlocProvider(
+      create: (context) => HomeCubit(HomeRepoImpl(getIt.get<APIService>())),
+      child: const HomeView(),
+    ),
     const Center(
       child: Text(
         'Cart',

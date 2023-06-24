@@ -4,8 +4,9 @@ import 'package:ecommerce_app/features/admin/posts/presentation/view%20model/pos
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../../widgets/simpe_app_bar.dart';
-import 'widgets/single_product.dart';
+
+import '../../../../../widgets/simple_app_bar.dart';
+import '../../../../../widgets/single_product.dart';
 import 'widgets/single_product_bottom_bar.dart';
 
 class PostsView extends StatelessWidget {

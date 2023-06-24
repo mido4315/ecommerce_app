@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../core/constants/app_assets.dart';
-
 class CustomImagesSlider extends StatelessWidget {
   const CustomImagesSlider({
     super.key,

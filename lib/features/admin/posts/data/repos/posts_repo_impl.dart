@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:ecommerce_app/core/utils/service_locator.dart';
 import 'package:ecommerce_app/features/admin/posts/data/models/product_model.dart';
 import 'package:ecommerce_app/features/auth/data/repos/auth_repo_impl.dart';
+
 import '../../../../../core/errors/failure.dart';
 import '../../../../../core/utils/api_service.dart';
 import 'posts_repo.dart';
@@ -17,12 +18,12 @@ class PostsRepoImpl implements PostsRepo {
   APIService apiService;
 
   // get the admin token
-  final String token = getIt.get<AuthRepoImpl>().myUserModel.token!;
+  final String _token = getIt.get<AuthRepoImpl>().myUserModel.token!;
 
   // create headers
-  Map<String, String> get headers => {
+  Map<String, String> get _headers => {
         'Content-Type': 'application/json; charset=utf-8',
-        'my-souq-auth-token': token
+        'my-souq-auth-token': _token
       };
 
   @override
@@ -33,7 +34,7 @@ class PostsRepoImpl implements PostsRepo {
       // make a post request to the server
       List<dynamic> result = await apiService.getList(
         path: '/admin/get-products',
-        headers: headers,
+        headers: _headers,
       );
       for (int i = 0; i < result.length; i++) {
         productsList.add(ProductModel.fromMap(result[i]));
@@ -87,7 +88,7 @@ class PostsRepoImpl implements PostsRepo {
       // make a post request to the server
       Map<String, dynamic> result = await apiService.post(
         path: '/admin/add-product',
-        headers: headers,
+        headers: _headers,
         data: productModel.toJson(),
       );
 
@@ -108,9 +109,9 @@ class PostsRepoImpl implements PostsRepo {
   Future<void> deleteProduct(String productId) async {
     try {
       // make a post request to the server
-      var result = await apiService.post(
+      await apiService.post(
         path: '/admin/delete-products',
-        headers: headers,
+        headers: _headers,
         data: json.encode({'id': productId}),
       );
     } catch (e) {

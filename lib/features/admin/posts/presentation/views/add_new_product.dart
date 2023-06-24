@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:ecommerce_app/core/constants/app_styles.dart';
 import 'package:ecommerce_app/core/widgets/pick_images.dart';
 import 'package:ecommerce_app/widgets/custom_images_slider.dart';
@@ -7,6 +8,7 @@ import 'package:ecommerce_app/widgets/simple_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../../core/widgets/custom_snack_bar.dart';
 import '../view model/add new product cubit/add_new_product_cubit.dart';
 import 'widgets/custom_dotted_box.dart';

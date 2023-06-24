@@ -7,9 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../widgets/custom_text_form_field.dart';
 import '../view model/register cubit/register_cubit.dart';
 import 'widgets/custom_auth_button.dart';
-import '../../../../widgets/custom_text_form_field.dart';
 import 'widgets/square_tile.dart';
 
 class RegisterView extends StatefulWidget {

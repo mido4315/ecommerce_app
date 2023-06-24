@@ -2,7 +2,6 @@ import 'package:ecommerce_app/widgets/product_card.dart';
 import 'package:ecommerce_app/widgets/simple_app_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../widgets/single_product.dart';
 import '../../../admin/posts/data/models/product_model.dart';
 
 class SearchView extends StatelessWidget {

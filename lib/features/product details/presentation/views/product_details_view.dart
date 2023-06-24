@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:ecommerce_app/widgets/custom_images_slider.dart';
 import 'package:ecommerce_app/widgets/simple_app_bar.dart';
