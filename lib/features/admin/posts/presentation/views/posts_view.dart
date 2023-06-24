@@ -1,11 +1,12 @@
 import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:ecommerce_app/core/utils/app_router.dart';
 import 'package:ecommerce_app/features/admin/posts/presentation/view%20model/posts%20cubit/posts_cubit.dart';
-import 'package:ecommerce_app/features/admin/posts/presentation/views/add_new_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../widgets/simpe_app_bar.dart';
+import 'widgets/single_product.dart';
+import 'widgets/single_product_bottom_bar.dart';
 
 class PostsView extends StatelessWidget {
   const PostsView({Key? key}) : super(key: key);
@@ -27,12 +28,22 @@ class PostsView extends StatelessWidget {
       body: BlocBuilder<PostsCubit, PostsState>(
         builder: (context, state) {
           if (state is PostsSuccess) {
-            return ListView.builder(
+            return GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
               itemCount: state.productsList.length,
               itemBuilder: (context, index) {
-                return Text(
-                  state.productsList[index].name,
-                  style: const TextStyle(fontSize: 50),
+                final theProduct = state.productsList[index];
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SingleProduct(
+                      image: theProduct.images[0],
+                    ),
+                    SingleProductBottomBar(theProduct: theProduct)
+                  ],
                 );
               },
             );
