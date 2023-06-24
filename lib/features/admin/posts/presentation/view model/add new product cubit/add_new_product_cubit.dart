@@ -6,8 +6,8 @@ import '../../../data/repos/posts_repo_impl.dart';
 
 part 'add_new_product_state.dart';
 
-class PostsCubit extends Cubit<PostsState> {
-  PostsCubit(this.postsRepo) : super(PostsInitial());
+class AddNewProductCubit extends Cubit<AddNewProductState> {
+  AddNewProductCubit(this.postsRepo) : super(AddNewProductInitial());
 
   final PostsRepoImpl postsRepo;
 
@@ -23,10 +23,10 @@ class PostsCubit extends Cubit<PostsState> {
     var result = await postsRepo.getProducts();
     result.fold(
           (failure) => emit(
-        PostsFailure(failure.errorMessage),
+        AddNewProductFailure(failure.errorMessage),
       ),
           (r) => emit(
-        PostsSuccess(),
+        AddNewProductSuccess(),
       ),
     );
   }
@@ -39,6 +39,7 @@ class PostsCubit extends Cubit<PostsState> {
     required String category,
     required List<File> images,
   }) async {
+    emit(AddNewProductLoading());
     var result = await postsRepo.addProduct(
       name: name,
       description: description,
@@ -49,10 +50,10 @@ class PostsCubit extends Cubit<PostsState> {
     );
     result.fold(
       (failure) => emit(
-        PostsFailure(failure.errorMessage),
+        AddNewProductFailure(failure.errorMessage),
       ),
       (r) => emit(
-        PostsSuccess(),
+        AddNewProductSuccess(),
       ),
     );
   }
