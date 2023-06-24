@@ -51,6 +51,7 @@ class _AddNewProductState extends State<AddNewProduct> {
   }
 
   final List<String> categories = [
+    'Laptop',
     'Hard Drives',
     'RAM',
     'Graphics Cards',
@@ -64,11 +65,11 @@ class _AddNewProductState extends State<AddNewProduct> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<PostsCubit, PostsState>(
+    return BlocListener<AddNewProductCubit, AddNewProductState>(
       listener: (context, state) {
-        if (state is PostsFailure) {
+        if (state is AddNewProductFailure) {
           customSnackBar(context, state.errorMessage);
-        } else if (state is PostsSuccess) {
+        } else if (state is AddNewProductSuccess) {
           customSnackBar(context, 'Product added successfully');
         }
       },
@@ -165,7 +166,7 @@ class _AddNewProductState extends State<AddNewProduct> {
                     onPressed: () {
                       if (_addNewProductKey.currentState!.validate() &&
                           images.isNotEmpty) {
-                        BlocProvider.of<PostsCubit>(context).addProduct(
+                        BlocProvider.of<AddNewProductCubit>(context).addProduct(
                           name: _nameController.text,
                           description: _descriptionController.text,
                           price: double.parse(_priceController.text),

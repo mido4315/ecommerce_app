@@ -22,10 +22,12 @@ class CategoriesBar extends StatelessWidget {
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return Padding(
+
               padding: const EdgeInsets.symmetric(horizontal: 6.0),
               child: GestureDetector(
                 onTap: () {
-                  var categoryTitle =AppAssets.categoriesIcons[index]["category"];
+                  var categoryTitle =
+                      AppAssets.categoriesIcons[index]["category"];
                   context.push(
                     '/kCategoriesDetailsView/$categoryTitle',
                   );
