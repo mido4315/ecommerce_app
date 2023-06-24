@@ -103,4 +103,25 @@ class PostsRepoImpl implements PostsRepo {
       ));
     }
   }
+
+  @override
+  Future<void> deleteProduct(String productId) async {
+    try {
+      // make a post request to the server
+      var result = await apiService.post(
+        path: '/admin/delete-products',
+        headers: headers,
+        data: json.encode({'id': productId}),
+      );
+    } catch (e) {
+      if (e is DioException) {
+        Left(
+          ServerFailure.fromDioError(e),
+        );
+      }
+      left(ServerFailure(
+        e.toString(),
+      ));
+    }
+  }
 }
