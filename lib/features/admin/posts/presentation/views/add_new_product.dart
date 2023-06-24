@@ -3,7 +3,7 @@ import 'package:ecommerce_app/core/constants/app_styles.dart';
 import 'package:ecommerce_app/core/widgets/pick_images.dart';
 import 'package:ecommerce_app/widgets/custom_images_slider.dart';
 import 'package:ecommerce_app/widgets/custom_text_form_field.dart';
-import 'package:ecommerce_app/widgets/simpe_app_bar.dart';
+import 'package:ecommerce_app/widgets/simple_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -90,7 +90,7 @@ class _AddNewProductState extends State<AddNewProduct> {
                           padding: const EdgeInsets.only(bottom: 20.0),
                           child: CustomImagesSlider(
                             isFile: true,
-                            images: images,
+                            images: images, autoPlay: false,
                           ),
                         ),
                       )
