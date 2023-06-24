@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../widgets/simpe_app_bar.dart';
+import '../../../../../widgets/simple_app_bar.dart';
 import '../../../posts/presentation/view model/posts cubit/posts_cubit.dart';
 import '../view model/admin cubit/admin_cubit.dart';
 import 'widgets/custom admin button navigation bar/custom_admin_bottom_navigation_bar.dart';
