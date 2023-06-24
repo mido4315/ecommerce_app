@@ -1,7 +1,10 @@
 import 'package:ecommerce_app/core/utils/shared_preferences.dart';
+import 'package:ecommerce_app/features/admin/posts/data/models/product_model.dart';
 import 'package:ecommerce_app/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:ecommerce_app/features/auth/presentation/view%20model/login%20cubit/login_cubit.dart';
 import 'package:ecommerce_app/features/auth/presentation/view%20model/register%20cubit/register_cubit.dart';
+import 'package:ecommerce_app/features/categories%20details/data/repos/categories_repo_impl.dart';
+import 'package:ecommerce_app/features/categories%20details/presentation/view%20model/categories%20details%20cubit/categories_details_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,6 +19,8 @@ import '../../features/categories details/presentation/views/categories_details_
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/layout/presentaion/view model/layout_cubit/layout_cubit.dart';
 import '../../features/layout/presentaion/views/layout_view.dart';
+import '../../features/product details/presentation/views/product_details_view.dart';
+import '../../features/search/presentation/views/search_view.dart';
 import 'api_service.dart';
 import 'service_locator.dart';
 
@@ -29,6 +34,8 @@ abstract class AppRouter {
   static const kAddNewProduct = '/AddNewProduct';
   static const kCategoriesDetailsView =
       '/kCategoriesDetailsView/:categoryTitle';
+  static const kSearchView = '/SearchView';
+  static const kProductDetailsView = '/ProductDetailsView';
 
   static final router = GoRouter(
     routes: [
@@ -112,14 +119,27 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kCategoriesDetailsView,
-        builder: (context, state) => CategoriesDetailsView(
-          categoryTitle: state.pathParameters['categoryTitle']!,
+        builder: (context, state) => BlocProvider(
+          create: (context) => CategoriesDetailsCubit(
+              CategoriesRepoImpl(getIt.get<APIService>()))
+            ..getProducts(category: state.pathParameters['categoryTitle']!),
+          child: CategoriesDetailsView(
+            categoryTitle: state.pathParameters['categoryTitle']!,
+          ),
         ),
       ),
-      // GoRoute(
-      //   path: kBookDetailsView,
-      //   builder: (context, state) => const BookDetailsView(),
-      // ),
+      GoRoute(
+        path: kSearchView,
+        builder: (context, state) => SearchView(
+          products: state.extra as List<ProductModel>,
+        ),
+      ),
+      GoRoute(
+        path: kProductDetailsView,
+        builder: (context, state) => ProductDetailsView(
+          product: state.extra as ProductModel,
+        ),
+      ),
       // GoRoute(
       //   path: kSearchView,
       //   builder: (context, state) => const SearchView(),
