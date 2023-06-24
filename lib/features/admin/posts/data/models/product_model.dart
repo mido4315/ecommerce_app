@@ -17,8 +17,8 @@ class ProductModel {
     required this.quantity,
     required this.category,
     required this.images,
-     id,
-     userId,
+     this.id,
+    this.userId,
   });
 
   factory ProductModel.fromMap(Map<String, dynamic> json) {
@@ -41,8 +41,8 @@ class ProductModel {
       "price": price,
       "qty": quantity,
       "category": category,
-      "images": jsonEncode(images),
-      "id": id,
+      "images": images,
+      "_id": id,
       "userId": userId,
     };
   }
