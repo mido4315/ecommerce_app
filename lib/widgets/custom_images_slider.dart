@@ -9,32 +9,39 @@ class CustomImagesSlider extends StatelessWidget {
   const CustomImagesSlider({
     super.key,
     required this.isFile,
-    this.images,
+    required this.images,
+    required this.autoPlay,
+    this.viewportFraction,
+    this.enableInfiniteScroll,
   });
 
-  final List<File>? images;
+  final dynamic images;
   final bool isFile;
+  final bool autoPlay;
+  final bool? enableInfiniteScroll;
+
+  final double? viewportFraction;
 
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
       items: isFile
-          ? images!.map((e) {
+          ? (images as List<File>).map((e) {
               return Builder(builder: (context) {
                 return Image.file(e);
               });
             }).toList()
-          : AppAssets.testImages.map((e) {
+          : (images as List<String>).map((e) {
               return Builder(builder: (context) {
                 return Image.network(e);
               });
             }).toList(),
       options: CarouselOptions(
-        viewportFraction: 0.9,
+        viewportFraction: viewportFraction ?? 0.9,
         initialPage: 0,
-        enableInfiniteScroll: true,
+        enableInfiniteScroll: enableInfiniteScroll ?? true,
         reverse: false,
-        autoPlay: true,
+        autoPlay: autoPlay,
         autoPlayInterval: const Duration(seconds: 3),
         autoPlayAnimationDuration: const Duration(milliseconds: 800),
         autoPlayCurve: Curves.fastOutSlowIn,
