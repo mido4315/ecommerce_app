@@ -1,7 +1,9 @@
-
+import 'package:ecommerce_app/core/constants/app_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../widgets/custom_images_slider.dart';
+import 'widgets/categories_bar.dart';
 import 'widgets/home_search_bar.dart';
 
 class HomeView extends StatelessWidget {
@@ -16,7 +18,10 @@ class HomeView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             HomeSearchBar(),
-            CustomImagesSlider(isFile: false,),
+            CategoriesBar(),
+            CustomImagesSlider(
+              isFile: false,
+            ),
           ],
         ),
       ),
