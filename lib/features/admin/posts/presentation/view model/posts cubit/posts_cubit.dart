@@ -9,6 +9,10 @@ class PostsCubit extends Cubit<PostsState> {
   PostsCubit(this.postsRepo) : super(PostsInitial());
   final PostsRepoImpl postsRepo;
 
+  void deleteProduct(String productId) async {
+    await postsRepo.deleteProduct(productId);
+  }
+
   Future<void> getProducts() async {
     emit(PostsLoading());
     var result = await postsRepo.getProducts();
