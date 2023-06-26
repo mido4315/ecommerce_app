@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
+import '../../../../../core/models/product_model.dart';
+import '../../view model/product details cubit/product_details_cubit.dart';
 
 class CustomRatingBar extends StatelessWidget {
   const CustomRatingBar({
     super.key,
+    required this.product,
   });
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
+    var cubit = BlocProvider.of<ProductDetailsCubit>(context);
     return RatingBar.builder(
-      initialRating: 3,
+      initialRating: cubit.userRating,
       minRating: 1,
       direction: Axis.horizontal,
       allowHalfRating: true,
@@ -20,7 +28,10 @@ class CustomRatingBar extends StatelessWidget {
         color: Colors.amber,
       ),
       onRatingUpdate: (rating) {
-        print(rating);
+        cubit.rateProduct(
+          product: product,
+          rating: rating,
+        );
       },
     );
   }
