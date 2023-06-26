@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/constants/app_colors.dart';
+import '../../../../../../core/utils/service_locator.dart';
+import '../../../../../auth/data/repos/auth_repo_impl.dart';
 import '../../../view model/layout_cubit/layout_cubit.dart';
 
 class InnerAnimatedContainer extends StatelessWidget {
@@ -24,6 +26,7 @@ class InnerAnimatedContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    cubit.updateCartItems();
     return AnimatedContainer(
       duration: const Duration(seconds: 1),
       curve: Curves.fastLinearToSlowEaseIn,
@@ -77,9 +80,9 @@ class InnerAnimatedContainer extends StatelessWidget {
                       : Colors.black26,
                 ),
               if (index == 1)
-                cubit.isCartItems
+                cubit.cartItems.isNotEmpty
                     ? Badge(
-                  label: const Text('2'),
+                  label:  Text(cubit.cartItems.length.toString()),
                   backgroundColor: Colors.red,
                   child: Icon(
                     listOfIcons[index],
