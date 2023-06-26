@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/core/utils/shared_preferences.dart';
-import 'package:ecommerce_app/features/admin/posts/data/models/product_model.dart';
+import 'package:ecommerce_app/core/models/product_model.dart';
 import 'package:ecommerce_app/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:ecommerce_app/features/auth/presentation/view%20model/login%20cubit/login_cubit.dart';
 import 'package:ecommerce_app/features/auth/presentation/view%20model/register%20cubit/register_cubit.dart';
@@ -19,6 +19,8 @@ import '../../features/categories details/presentation/views/categories_details_
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/layout/presentaion/view model/layout_cubit/layout_cubit.dart';
 import '../../features/layout/presentaion/views/layout_view.dart';
+import '../../features/product details/data/repos/product_details_repo_impl.dart';
+import '../../features/product details/presentation/view model/product details cubit/product_details_cubit.dart';
 import '../../features/product details/presentation/views/product_details_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import 'api_service.dart';
@@ -93,7 +95,7 @@ abstract class AppRouter {
       GoRoute(
         path: kLayoutView,
         builder: (context, state) => BlocProvider(
-          create: (context) => LayoutCubit(),
+          create: (context) => LayoutCubit() ,
           child: const LayoutView(),
         ),
       ),
@@ -136,8 +138,15 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kProductDetailsView,
-        builder: (context, state) => ProductDetailsView(
-          product: state.extra as ProductModel,
+        builder: (context, state) => BlocProvider(
+          create: (context) => ProductDetailsCubit(
+              ProductDetailsRepoImpl(getIt.get<APIService>()))
+            ..calculateRating(
+              state.extra as ProductModel,
+            ),
+          child: ProductDetailsView(
+            product: state.extra as ProductModel,
+          ),
         ),
       ),
       // GoRoute(
