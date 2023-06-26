@@ -6,16 +6,22 @@ import 'package:ecommerce_app/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../auth/data/repos/auth_repo_impl.dart';
+import '../../../../cart/presentation/view model/cart cubit/cart_cubit.dart';
+import '../../../../cart/presentation/views/cart_view.dart';
 import '../../../../profile/presentation/views/profile_view.dart';
 
 part 'layout_state.dart';
 
 class LayoutCubit extends Cubit<LayoutState> {
-  LayoutCubit()
-      : isCartItems = false,
-        super(LayoutInitial());
+  LayoutCubit() : super(LayoutInitial());
 
-  final bool isCartItems;
+  var cartItems = getIt.get<AuthRepoImpl>().myUserModel.cart!;
+
+  void updateCartItems() {
+    cartItems = getIt.get<AuthRepoImpl>().myUserModel.cart!;
+    emit(LayoutChangeTap());
+  }
 
   int bottomNavigationBarCurrentIndex = 0;
 
@@ -40,14 +46,13 @@ class LayoutCubit extends Cubit<LayoutState> {
 
   final List<Widget> layoutPages = [
     BlocProvider(
-      create: (context) => HomeCubit(HomeRepoImpl(getIt.get<APIService>())),
+      create: (context) =>
+          HomeCubit(HomeRepoImpl(getIt.get<APIService>()))..getBestProducts(),
       child: const HomeView(),
     ),
-    const Center(
-      child: Text(
-        'Cart',
-        style: TextStyle(fontSize: 40),
-      ),
+    BlocProvider(
+      create: (context) => CartCubit(),
+      child: const CartView(),
     ),
     const Center(
       child: Text(
