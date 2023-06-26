@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/constants/app_colors.dart';
-import '../../../../../../core/utils/service_locator.dart';
-import '../../../../../auth/data/repos/auth_repo_impl.dart';
 import '../../../view model/layout_cubit/layout_cubit.dart';
 
 class InnerAnimatedContainer extends StatelessWidget {

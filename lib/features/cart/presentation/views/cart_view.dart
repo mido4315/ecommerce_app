@@ -1,15 +1,11 @@
 import 'package:ecommerce_app/core/models/product_model.dart';
 import 'package:ecommerce_app/features/cart/presentation/view%20model/cart%20cubit/cart_cubit.dart';
-import 'package:ecommerce_app/features/product%20details/presentation/views/widgets/input_quantity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:input_quantity/input_quantity.dart';
 
 import '../../../../core/constants/app_colors.dart';
-import '../../../../core/utils/service_locator.dart';
-import '../../../auth/data/repos/auth_repo_impl.dart';
 import '../../../home/presentation/views/widgets/product_card_horizontal.dart';
-import '../../../product details/presentation/view model/product details cubit/product_details_cubit.dart';
 import 'widgets/address_bar.dart';
 
 class CartView extends StatelessWidget {

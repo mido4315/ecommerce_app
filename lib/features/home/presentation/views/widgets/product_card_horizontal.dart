@@ -23,7 +23,7 @@ class ProductCardHorizontal extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
 
         ),
         margin: const EdgeInsets.symmetric(

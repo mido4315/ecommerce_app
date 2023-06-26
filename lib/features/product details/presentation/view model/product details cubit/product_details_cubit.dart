@@ -1,6 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/core/models/user_model.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 import '../../../../../core/models/product_model.dart';
 import '../../../../../core/utils/service_locator.dart';

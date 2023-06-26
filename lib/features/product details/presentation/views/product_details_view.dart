@@ -1,18 +1,13 @@
 import 'package:ecommerce_app/core/constants/app_colors.dart';
-import 'package:ecommerce_app/core/constants/app_styles.dart';
 import 'package:ecommerce_app/widgets/custom_images_slider.dart';
 import 'package:ecommerce_app/widgets/simple_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:input_quantity/input_quantity.dart';
 
 import '../../../../core/models/product_model.dart';
 import '../view model/product details cubit/product_details_cubit.dart';
 import 'widgets/average_rating_bar.dart';
-import 'widgets/custom_rating_bar.dart';
 import 'widgets/product_details_floating_action_button.dart';
 import 'widgets/product_info.dart';
 

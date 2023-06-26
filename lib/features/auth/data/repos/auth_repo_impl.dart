@@ -2,10 +2,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:ecommerce_app/core/errors/failure.dart';
+import 'package:ecommerce_app/core/models/user_model.dart';
 import 'package:ecommerce_app/core/utils/api_service.dart';
 import 'package:ecommerce_app/core/utils/service_locator.dart';
 import 'package:ecommerce_app/core/utils/shared_preferences.dart';
-import 'package:ecommerce_app/core/models/user_model.dart';
 
 import 'auth_repo.dart';
 

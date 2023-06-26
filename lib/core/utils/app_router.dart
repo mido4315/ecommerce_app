@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/core/utils/shared_preferences.dart';
 import 'package:ecommerce_app/core/models/product_model.dart';
+import 'package:ecommerce_app/core/utils/shared_preferences.dart';
 import 'package:ecommerce_app/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:ecommerce_app/features/auth/presentation/view%20model/login%20cubit/login_cubit.dart';
 import 'package:ecommerce_app/features/auth/presentation/view%20model/register%20cubit/register_cubit.dart';

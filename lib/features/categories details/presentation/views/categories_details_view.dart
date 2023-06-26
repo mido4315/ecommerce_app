@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/models/product_model.dart';
 import '../../../../widgets/simple_app_bar.dart';
 import '../../../../widgets/single_product.dart';
-import '../../../../core/models/product_model.dart';
 import '../view model/categories details cubit/categories_details_cubit.dart';
 
 class CategoriesDetailsView extends StatelessWidget {

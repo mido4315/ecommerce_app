@@ -8,7 +8,6 @@ import '../../../../core/errors/failure.dart';
 import '../../../../core/utils/api_service.dart';
 import '../../../../core/utils/service_locator.dart';
 import '../../../auth/data/repos/auth_repo_impl.dart';
-import '../../../layout/presentaion/view model/layout_cubit/layout_cubit.dart';
 import 'product_details_repo.dart';
 
 class ProductDetailsRepoImpl implements ProductDetailsRepo {
