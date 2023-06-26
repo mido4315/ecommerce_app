@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/widgets/show_alert_dialog.dart';
-import '../../../data/models/product_model.dart';
+import '../../../../../../core/models/product_model.dart';
 import '../../view model/posts cubit/posts_cubit.dart';
 
 class SingleProductBottomBar extends StatelessWidget {
