@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../admin/posts/data/models/product_model.dart';
+import '../../../../../core/models/product_model.dart';
 import '../../../data/repos/categories_repo_impl.dart';
 
 part 'categories_details_state.dart';

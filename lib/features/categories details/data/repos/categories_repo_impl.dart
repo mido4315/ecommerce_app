@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:ecommerce_app/core/errors/failure.dart';
 import 'package:ecommerce_app/core/utils/api_service.dart';
-import 'package:ecommerce_app/features/admin/posts/data/models/product_model.dart';
+import 'package:ecommerce_app/core/models/product_model.dart';
 import 'package:ecommerce_app/features/categories%20details/data/repos/categories_repo.dart';
 
 import '../../../../core/utils/service_locator.dart';
