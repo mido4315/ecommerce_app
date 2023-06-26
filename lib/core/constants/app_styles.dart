@@ -17,6 +17,11 @@ class AppStyles {
     fontSize: 22,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle textStyleTitle26 = const TextStyle(
+    color: AppColors.text1,
+    fontSize: 26,
+    fontWeight: FontWeight.bold,
+  );
   static TextStyle textStyleTitle30 = const TextStyle(
     color: AppColors.text1,
     fontSize: 30,
