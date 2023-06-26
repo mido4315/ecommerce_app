@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/models/product_model.dart';
+import '../../../../../../core/models/product_model.dart';
 import '../../../data/repos/posts_repo_impl.dart';
 
 part 'posts_state.dart';

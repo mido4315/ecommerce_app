@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:ecommerce_app/features/admin/posts/data/models/product_model.dart';
+import 'package:ecommerce_app/core/models/product_model.dart';
 
 import '../../../../../core/errors/failure.dart';
 
