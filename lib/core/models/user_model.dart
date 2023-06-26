@@ -10,18 +10,19 @@ class UserModel {
   final DateTime? createdAt;
   final int? v;
   final String? token;
+  List<dynamic>? cart;
 
-  UserModel({
-    this.name,
-    required this.email,
-    required this.password,
-    this.address,
-    this.type,
-    this.id,
-    this.createdAt,
-    this.v,
-    this.token,
-  });
+  UserModel(
+      {this.name,
+      required this.email,
+      required this.password,
+      this.address,
+      this.type,
+      this.id,
+      this.createdAt,
+      this.v,
+      this.token,
+       this.cart});
 
   factory UserModel.fromMap(Map<String, dynamic> data) => UserModel(
         name: data['name'] as String?,
@@ -35,6 +36,11 @@ class UserModel {
             : DateTime.parse(data['createdAt'] as String),
         v: data['__v'] as int?,
         token: data['token'],
+        cart: List<Map<String, dynamic>>.from(
+          data['cart']?.map(
+            (x) => Map<String, dynamic>.from(x),
+          ),
+        ),
       );
 
   Map<String, dynamic> toMap() => {
@@ -44,6 +50,7 @@ class UserModel {
         'address': address,
         'type': type,
         '_id': id,
+        "cart": cart,
         'createdAt': createdAt?.toIso8601String(),
         '__v': v,
       };
@@ -59,4 +66,26 @@ class UserModel {
   ///
   /// Converts [UserModel] to a JSON string.
   String toJson() => json.encode(toMap());
+
+  UserModel copyWith({
+    String? id,
+    String? name,
+    String? password,
+    String? email,
+    String? address,
+    String? type,
+    String? token,
+    List<dynamic>? cart,
+  }) {
+    return UserModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      password: password ?? this.password,
+      email: email ?? this.email,
+      address: address ?? this.password,
+      type: type ?? this.type,
+      token: token ?? this.token,
+      cart: cart ?? this.cart,
+    );
+  }
 }
