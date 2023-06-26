@@ -5,7 +5,7 @@ import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:ecommerce_app/core/utils/service_locator.dart';
-import 'package:ecommerce_app/features/admin/posts/data/models/product_model.dart';
+import 'package:ecommerce_app/core/models/product_model.dart';
 import 'package:ecommerce_app/features/auth/data/repos/auth_repo_impl.dart';
 
 import '../../../../../core/errors/failure.dart';
