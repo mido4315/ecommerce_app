@@ -1,11 +1,17 @@
-
+import 'package:ecommerce_app/features/product%20details/presentation/view%20model/product%20details%20cubit/product_details_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+
+import '../../../../../core/models/product_model.dart';
 
 class ProductDetailFloatingActionButton extends StatelessWidget {
   const ProductDetailFloatingActionButton({
     super.key,
+    required this.product,
   });
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +30,10 @@ class ProductDetailFloatingActionButton extends StatelessWidget {
           label: 'Add to Cart',
           labelStyle: const TextStyle(fontSize: 18.0),
           onTap: () {
-            // productServices.addProductToCart(
-            //     context: context,
-            //     product: widget.product,
-            //     qty: 1
-            // );
-            Navigator.pop(context);
+            BlocProvider.of<ProductDetailsCubit>(context).addProductToCart(
+              product: product,
+              quantity: BlocProvider.of<ProductDetailsCubit>(context).quantity,
+            );
           },
         ),
         SpeedDialChild(
