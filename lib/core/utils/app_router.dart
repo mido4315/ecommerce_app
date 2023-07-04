@@ -5,6 +5,8 @@ import 'package:ecommerce_app/features/auth/presentation/view%20model/login%20cu
 import 'package:ecommerce_app/features/auth/presentation/view%20model/register%20cubit/register_cubit.dart';
 import 'package:ecommerce_app/features/categories%20details/data/repos/categories_repo_impl.dart';
 import 'package:ecommerce_app/features/categories%20details/presentation/view%20model/categories%20details%20cubit/categories_details_cubit.dart';
+import 'package:ecommerce_app/features/my%20orders/data/repos/my_orders_repo_impl.dart';
+import 'package:ecommerce_app/features/my%20orders/presentation/view%20model/my_orders_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,6 +23,7 @@ import '../../features/categories details/presentation/views/categories_details_
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/layout/presentaion/view model/layout_cubit/layout_cubit.dart';
 import '../../features/layout/presentaion/views/layout_view.dart';
+import '../../features/my orders/presentation/views/my_orders_view.dart';
 import '../../features/product details/data/repos/product_details_repo_impl.dart';
 import '../../features/product details/presentation/view model/product details cubit/product_details_cubit.dart';
 import '../../features/product details/presentation/views/product_details_view.dart';
@@ -41,6 +44,7 @@ abstract class AppRouter {
   static const kSearchView = '/SearchView';
   static const kProductDetailsView = '/ProductDetailsView';
   static const kAddressView = '/AddressView';
+  static const kMyOrdersView = '/MyOrdersView';
 
   static final router = GoRouter(
     routes: [
@@ -157,7 +161,17 @@ abstract class AppRouter {
         builder: (context, state) => BlocProvider(
           create: (context) =>
               CartCubit(ProductDetailsRepoImpl(getIt.get<APIService>())),
-          child: AddressView(totalPrice: state.extra as double,),
+          child: AddressView(
+            totalPrice: state.extra as double,
+          ),
+        ),
+      ),
+      GoRoute(
+        path: kMyOrdersView,
+        builder: (context, state) => BlocProvider(
+          create: (context) =>
+              MyOrdersCubit(MyOrdersRepoImpl(getIt.get<APIService>()))..getOrders(),
+          child: const MyOrdersView(),
         ),
       ),
       // GoRoute(
