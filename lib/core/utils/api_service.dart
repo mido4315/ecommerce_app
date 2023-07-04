@@ -65,4 +65,19 @@ class APIService {
     );
     return response;
   }
+
+  Future<Map<String, dynamic>> delete({
+    Map<String, dynamic>? headers,
+    required String path,
+    String? data,
+  }) async {
+    Response response = await _dio.delete(
+      '$_baseUrl$path',
+      options: Options(
+        headers: headers ?? _headers,
+      ),
+      data: data,
+    );
+    return response.data;
+  }
 }
