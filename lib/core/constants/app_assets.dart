@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class AppAssets {
   static const String appleLogo = 'assets/images/apple.png';
   static const String googleLogo = 'assets/images/google.png';
@@ -47,4 +49,37 @@ class AppAssets {
     },
   ];
 
+  static String getStatus(int value) {
+    switch (value) {
+      case 0:
+        return "preparing";
+      case 1:
+        return "Preparing";
+      case 2:
+        return "Ready";
+      case 3:
+        return "On Way";
+      case 4:
+        return "Completed";
+      default:
+        return "preparing";
+    }
+  }
+
+  static Color? getStatusColor(int value) {
+    switch (value) {
+      case 0:
+        return Colors.green;
+      case 1:
+        return Colors.blue;
+      case 2:
+        return Colors.yellowAccent;
+      case 3:
+        return Colors.deepOrange;
+      case 4:
+        return Colors.red;
+      default:
+        return Colors.green;
+    }
+  }
 }
