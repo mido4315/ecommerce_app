@@ -58,6 +58,7 @@ class ProductDetailsRepoImpl implements ProductDetailsRepo {
     required int quantity,
   }) async {
     try {
+      print(product.id);
       // make a post request to the server
       var result = await apiService.post(
           path: '/api/add-to-cart',
@@ -66,6 +67,30 @@ class ProductDetailsRepoImpl implements ProductDetailsRepo {
             'id': product.id,
             'qty': quantity,
           }));
+      getIt.get<AuthRepoImpl>().myUserModel.cart = result['cart'];
+      return right(null);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(
+          ServerFailure.fromDioError(e),
+        );
+      }
+      return Left(
+        ServerFailure(e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteFromCart({
+    required ProductModel product,
+  }) async {
+    try {
+      // make a post request to the server
+      var result = await apiService.delete(
+        path: '/api/remove-to-cart/${product.id}',
+        headers: _headers,
+      );
       getIt.get<AuthRepoImpl>().myUserModel.cart = result['cart'];
       return right(null);
     } catch (e) {
