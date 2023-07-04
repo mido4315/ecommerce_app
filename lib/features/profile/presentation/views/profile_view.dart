@@ -1,5 +1,7 @@
 
+import 'package:ecommerce_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'widgets/profile_button.dart';
 import 'widgets/profile_image.dart';
@@ -30,7 +32,9 @@ class ProfileView extends StatelessWidget {
                 children: <Widget>[
                   ProfileButton(
                     buttonName: 'My Orders',
-                    onPressed: () {},
+                    onPressed: () {
+                      context.push(AppRouter.kMyOrdersView);
+                    },
                   ),
                   ProfileButton(
                     buttonName: 'Best Seller',
