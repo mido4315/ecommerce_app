@@ -15,6 +15,8 @@ import '../../features/admin/posts/presentation/view model/add new product cubit
 import '../../features/admin/posts/presentation/views/add_new_product.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
+import '../../features/cart/presentation/view model/cart cubit/cart_cubit.dart';
+import '../../features/cart/presentation/views/address_view.dart';
 import '../../features/categories details/presentation/views/categories_details_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/layout/presentaion/view model/layout_cubit/layout_cubit.dart';
@@ -38,6 +40,7 @@ abstract class AppRouter {
       '/kCategoriesDetailsView/:categoryTitle';
   static const kSearchView = '/SearchView';
   static const kProductDetailsView = '/ProductDetailsView';
+  static const kAddressView = '/AddressView';
 
   static final router = GoRouter(
     routes: [
@@ -95,7 +98,7 @@ abstract class AppRouter {
       GoRoute(
         path: kLayoutView,
         builder: (context, state) => BlocProvider(
-          create: (context) => LayoutCubit() ,
+          create: (context) => LayoutCubit(),
           child: const LayoutView(),
         ),
       ),
@@ -147,6 +150,14 @@ abstract class AppRouter {
           child: ProductDetailsView(
             product: state.extra as ProductModel,
           ),
+        ),
+      ),
+      GoRoute(
+        path: kAddressView,
+        builder: (context, state) => BlocProvider(
+          create: (context) =>
+              CartCubit(ProductDetailsRepoImpl(getIt.get<APIService>())),
+          child: AddressView(totalPrice: state.extra as double,),
         ),
       ),
       // GoRoute(
