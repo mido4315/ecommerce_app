@@ -52,6 +52,7 @@ dependencies:
   flutter_speed_dial: ^7.0.0
   flutter_rating_bar: ^4.0.1
   input_quantity: ^1.2.1
+  pay: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -108,3 +109,4 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/

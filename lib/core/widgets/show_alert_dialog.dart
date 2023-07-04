@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-showAlertDialog(
-    {required BuildContext context,
-    required VoidCallback onOk,
-    required String txtHead,
-    required String txtMsg}) {
+showAlertDialog({
+  required BuildContext context,
+  required VoidCallback onOk,
+  required String txtHead,
+  required String txtMsg,
+}) {
   Widget cancelButton = TextButton(
       onPressed: () {
         Navigator.pop(context);

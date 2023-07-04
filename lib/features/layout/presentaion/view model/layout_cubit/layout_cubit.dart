@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../auth/data/repos/auth_repo_impl.dart';
 import '../../../../cart/presentation/view model/cart cubit/cart_cubit.dart';
 import '../../../../cart/presentation/views/cart_view.dart';
+import '../../../../product details/data/repos/product_details_repo_impl.dart';
 import '../../../../profile/presentation/views/profile_view.dart';
 
 part 'layout_state.dart';
@@ -51,7 +52,9 @@ class LayoutCubit extends Cubit<LayoutState> {
       child: const HomeView(),
     ),
     BlocProvider(
-      create: (context) => CartCubit(),
+      create: (context) =>
+          CartCubit(ProductDetailsRepoImpl(getIt.get<APIService>()))
+            ..calculateTotalPrice(),
       child: const CartView(),
     ),
     const Center(
