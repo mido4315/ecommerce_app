@@ -12,6 +12,7 @@ class ProductModel {
   String? id;
   String? userId;
   final List<Rating>? rating;
+  double? selQty;
 
   ProductModel({
     required this.name,
@@ -23,6 +24,7 @@ class ProductModel {
     this.id,
     this.userId,
     this.rating,
+    this.selQty
   });
 
   factory ProductModel.fromMap(Map<String, dynamic> json) {
@@ -42,6 +44,7 @@ class ProductModel {
               ),
             )
           : null,
+      selQty: json['selQty']
     );
   }
 
@@ -56,6 +59,7 @@ class ProductModel {
       "_id": id,
       "userId": userId,
       "rating": rating,
+      "selQty":selQty
     };
   }
 
