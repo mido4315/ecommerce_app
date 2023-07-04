@@ -8,12 +8,15 @@ class CustomTextFormField extends StatelessWidget {
     required this.hintText,
     required this.obscureText,
     this.maxLines = 1,
+    this.prefixIcon,
   });
 
   final TextEditingController controller;
   final String hintText;
   final bool obscureText;
   final int maxLines;
+  final IconData? prefixIcon;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,6 +32,7 @@ class CustomTextFormField extends StatelessWidget {
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
+          prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.card),
           ),
