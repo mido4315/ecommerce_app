@@ -7,8 +7,13 @@ abstract class ProductDetailsRepo {
     required ProductModel product,
     required double rating,
   });
+
   Future<Either<Failure, void>> addProductToCart({
     required ProductModel product,
     required int quantity,
+  });
+
+  Future<Either<Failure, void>> deleteFromCart({
+    required ProductModel product,
   });
 }
