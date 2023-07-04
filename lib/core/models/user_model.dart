@@ -4,7 +4,7 @@ class UserModel {
   final String? name;
   final String email;
   final String password;
-  final String? address;
+  String? address;
   final String? type;
   final String? id;
   final DateTime? createdAt;
