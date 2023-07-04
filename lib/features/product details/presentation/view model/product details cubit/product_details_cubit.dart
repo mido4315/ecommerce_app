@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/core/models/user_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import '../../../../../core/models/product_model.dart';
 import '../../../../../core/utils/service_locator.dart';
 import '../../../../auth/data/repos/auth_repo_impl.dart';
