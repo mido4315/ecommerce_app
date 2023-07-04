@@ -30,7 +30,6 @@ class _RegisterViewState extends State<RegisterView> {
 
   final _passwordController = TextEditingController();
 
-  final _addressController = TextEditingController();
 
   // dispose text editing controllers
   @override
@@ -39,7 +38,6 @@ class _RegisterViewState extends State<RegisterView> {
     _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
-    _addressController.dispose();
   }
 
   // sign user in method
@@ -49,7 +47,6 @@ class _RegisterViewState extends State<RegisterView> {
         name: _nameController.text,
         email: _emailController.text,
         password: _passwordController.text,
-        address: _addressController.text,
       );
     }
   }
@@ -116,11 +113,6 @@ class _RegisterViewState extends State<RegisterView> {
                         ),
 
                         SizedBox(height: 10.h),
-                        CustomTextFormField(
-                          controller: _addressController,
-                          hintText: 'Address',
-                          obscureText: false,
-                        ),
                       ],
                     ),
                   ),
