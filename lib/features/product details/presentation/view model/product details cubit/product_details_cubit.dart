@@ -29,7 +29,6 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
     }
   }
 
-
   Future<void> rateProduct({
     required ProductModel product,
     required double rating,

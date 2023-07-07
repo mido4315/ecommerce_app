@@ -8,7 +8,7 @@ class OrderModel {
   final String address;
   final String userId;
   final int orderedAt;
-  final int status;
+   int status;
   final String paymentMethod;
   final double totalPrice;
 
