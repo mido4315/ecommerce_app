@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/app_assets.dart';
+import '../core/constants/app_assets.dart';
 
 TableRow tableRow({
   required index,
@@ -9,6 +8,7 @@ TableRow tableRow({
   required amount,
   required int status,
   required int i,
+  required VoidCallback onTap,
 }) {
   return TableRow(
     decoration: const BoxDecoration(
@@ -46,13 +46,16 @@ TableRow tableRow({
             width: 10,
           ),
           const SizedBox(
-            width: 10,
+            width: 5,
           ),
-          Text(AppAssets.getStatus(status)),
+          Text(
+            AppAssets.getStatus(status),
+            style: const TextStyle(fontSize: 14),
+          ),
         ],
       ),
       InkWell(
-        onTap: () {},
+        onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
               color: Colors.red, borderRadius: BorderRadius.circular(100)),
@@ -61,7 +64,7 @@ TableRow tableRow({
             child: Text(
               "view",
               style:
-              TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
             ),
           ),
         ),

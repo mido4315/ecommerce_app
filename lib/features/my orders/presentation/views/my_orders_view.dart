@@ -1,10 +1,12 @@
+import 'package:ecommerce_app/core/utils/app_router.dart';
 import 'package:ecommerce_app/features/my%20orders/presentation/view%20model/my_orders_cubit.dart';
 import 'package:ecommerce_app/widgets/simple_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
-import 'widgets/table_header.dart';
-import 'widgets/table_row.dart';
+import '../../../../widgets/table_header.dart';
+import '../../../../widgets/table_row.dart';
 
 class MyOrdersView extends StatelessWidget {
   const MyOrdersView({Key? key}) : super(key: key);
@@ -45,6 +47,12 @@ class MyOrdersView extends StatelessWidget {
                         status: state.myOrders[i].status,
                         index: (i + 1).toString(),
                         i: i,
+                        onTap: () {
+                          context.push(
+                            AppRouter.kMyOrdersDetailsView,
+                            extra: state.myOrders[i],
+                          );
+                        },
                       ),
                   ],
                 ),
