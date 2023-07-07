@@ -23,11 +23,13 @@ import '../../features/categories details/presentation/views/categories_details_
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/layout/presentaion/view model/layout_cubit/layout_cubit.dart';
 import '../../features/layout/presentaion/views/layout_view.dart';
+import '../../features/my orders/presentation/views/my_orders_details_view.dart';
 import '../../features/my orders/presentation/views/my_orders_view.dart';
 import '../../features/product details/data/repos/product_details_repo_impl.dart';
 import '../../features/product details/presentation/view model/product details cubit/product_details_cubit.dart';
 import '../../features/product details/presentation/views/product_details_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
+import '../models/order.dart';
 import 'api_service.dart';
 import 'service_locator.dart';
 
@@ -45,6 +47,7 @@ abstract class AppRouter {
   static const kProductDetailsView = '/ProductDetailsView';
   static const kAddressView = '/AddressView';
   static const kMyOrdersView = '/MyOrdersView';
+  static const kMyOrdersDetailsView = '/MyOrdersDetailsView';
 
   static final router = GoRouter(
     routes: [
@@ -170,8 +173,15 @@ abstract class AppRouter {
         path: kMyOrdersView,
         builder: (context, state) => BlocProvider(
           create: (context) =>
-              MyOrdersCubit(MyOrdersRepoImpl(getIt.get<APIService>()))..getOrders(),
+              MyOrdersCubit(MyOrdersRepoImpl(getIt.get<APIService>()))
+                ..getOrders(),
           child: const MyOrdersView(),
+        ),
+      ),
+      GoRoute(
+        path: kMyOrdersDetailsView,
+        builder: (context, state) => MyOrdersDetailsView(
+          order: state.extra as OrderModel,
         ),
       ),
       // GoRoute(
