@@ -1,8 +1,10 @@
-
 import 'package:ecommerce_app/core/utils/app_router.dart';
+import 'package:ecommerce_app/core/utils/service_locator.dart';
+import 'package:ecommerce_app/core/widgets/show_alert_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/utils/shared_preferences.dart';
 import 'widgets/profile_button.dart';
 import 'widgets/profile_image.dart';
 import 'widgets/profile_info.dart';
@@ -50,7 +52,17 @@ class ProfileView extends StatelessWidget {
                   ),
                   ProfileButton(
                     buttonName: 'Log Out',
-                    onPressed: () {},
+                    onPressed: () {
+                      showAlertDialog(
+                        context: context,
+                        onOk: () {
+                          getIt.get<SharedPrefs>().clearData();
+                          context.pushReplacement('/');
+                        },
+                        txtHead: 'Do you want to log out',
+                        txtMsg: '',
+                      );
+                    },
                   ),
                 ],
               ),
