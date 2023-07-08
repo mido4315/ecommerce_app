@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/models/product_model.dart';
+import '../../../../core/utils/app_router.dart';
 import '../../../../widgets/simple_app_bar.dart';
 import '../../../../widgets/single_product.dart';
 import '../view model/categories details cubit/categories_details_cubit.dart';
@@ -28,22 +31,36 @@ class CategoriesDetailsView extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 ProductModel theProduct = state.products[index];
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SingleProduct(
-                      image: theProduct.images[0],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(theProduct.name),
-                        Text('${theProduct.price}EGP'),
-                      ],
-                    )
-                  ],
+                return GestureDetector(
+                  onTap: () {
+                    context.push(AppRouter.kProductDetailsView, extra: theProduct);
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SizedBox(
+                        height: 100.h,
+                        width: 180.w,
+                        child: SingleProduct(
+                          image: theProduct.images[0],
+                        ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            theProduct.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Text('${theProduct.price.toInt()}EGP'),
+                        ],
+                      )
+                    ],
+                  ),
                 );
               },
             );
