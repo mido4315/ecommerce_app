@@ -40,8 +40,12 @@ class PostsView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SingleProduct(
-                      image: theProduct.images[0],
+                    SizedBox(
+                      height: 120,
+                      width: 190,
+                      child: SingleProduct(
+                        image: theProduct.images[0],
+                      ),
                     ),
                     SingleProductBottomBar(theProduct: theProduct)
                   ],
