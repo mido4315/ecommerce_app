@@ -21,10 +21,13 @@ class SingleProductBottomBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            theProduct.name,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 2,
+          SizedBox(
+            width: 120.w,
+            child: Text(
+              theProduct.name,
+              overflow: TextOverflow.ellipsis,
+              maxLines:1,
+            ),
           ),
           IconButton(
             onPressed: () {
