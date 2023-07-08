@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:ecommerce_app/core/errors/failure.dart';
 import 'package:ecommerce_app/core/utils/api_service.dart';
 import 'package:ecommerce_app/features/admin/analytics/data/models/sales_model.dart';
+
 import '../../../../../core/utils/service_locator.dart';
 import '../../../../auth/data/repos/auth_repo_impl.dart';
 import 'analytics_repo.dart';
@@ -32,25 +33,25 @@ class AnalyticsRepoImpl extends AnalyticsRepo {
         path: '/admin/analytics',
         headers: _headers,
       );
-      totalSales = double.parse(result['totalSales'].toString()) ?? 0.0;
-      totalOrders = double.parse(result['totalOrders'].toString()) ?? 0.0;
-      totalProducts = double.parse(result['totalProducts'].toString()) ?? 0.0;
+      totalSales = double.parse(result['totalSales'].toString());
+      totalOrders = double.parse(result['totalOrders'].toString()) ;
+      totalProducts = double.parse(result['totalProducts'].toString());
       sales = [
         Sales(
             label: 'Laptops',
-            totalSale: double.parse(result['catMobiles'].toString()) ?? 0.0),
+            totalSale: double.parse(result['catMobiles'].toString()) ),
         Sales(
             label: 'Rams',
-            totalSale: double.parse(result['catComputers'].toString()) ?? 0.0),
+            totalSale: double.parse(result['catComputers'].toString())),
         Sales(
             label: 'Cables',
-            totalSale: double.parse(result['catEssentials'].toString()) ?? 0.0),
+            totalSale: double.parse(result['catEssentials'].toString())),
         Sales(
             label: 'GPUs',
-            totalSale: double.parse(result['catAppliances'].toString()) ?? 0.0),
+            totalSale: double.parse(result['catAppliances'].toString()) ),
         Sales(
             label: 'HDDs',
-            totalSale: double.parse(result['catFashion'].toString()) ?? 0.0),
+            totalSale: double.parse(result['catFashion'].toString()) ),
       ];
       return right(
         {

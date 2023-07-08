@@ -33,7 +33,7 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
     required ProductModel product,
     required double rating,
   }) async {
-    var result =
+
         await productDetailsRepo.rateProduct(product: product, rating: rating);
   }
 
@@ -43,7 +43,7 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
     required ProductModel product,
     required int quantity,
   }) async {
-    var result = await productDetailsRepo.addProductToCart(
+     await productDetailsRepo.addProductToCart(
       product: product,
       quantity: quantity,
     );

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
-
 /// Chart import
 import 'package:syncfusion_flutter_charts/charts.dart';
 

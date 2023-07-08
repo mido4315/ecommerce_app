@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utils/api_service.dart';
 import '../../../../widgets/order_tracking.dart';
-import '../../../auth/data/repos/auth_repo_impl.dart';
 
 class MyOrdersDetailsView extends StatelessWidget {
   const MyOrdersDetailsView({Key? key, required this.order}) : super(key: key);
