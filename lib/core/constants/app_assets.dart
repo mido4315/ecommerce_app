@@ -24,7 +24,7 @@ class AppAssets {
       'icon': 'assets/icons/ram-memory.png',
     },
     {
-      'category': 'Graphic Cards',
+      'category': 'Graphics Cards',
       'icon': 'assets/icons/graphic-card.png',
     },
     {
@@ -40,7 +40,7 @@ class AppAssets {
       'icon': 'assets/icons/printer.png',
     },
     {
-      'category': 'Cables',
+      'category': 'Cables and Connectors',
       'icon': 'assets/icons/cable-connector.png',
     },
     {

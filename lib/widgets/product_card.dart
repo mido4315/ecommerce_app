@@ -45,7 +45,7 @@ class ProductCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                           child: Image.network(
                             product.images[0],
-                            height: 90.h,
+                            height: 85.h,
                             width: 140.w,
                           )),
                       Text(
@@ -63,7 +63,7 @@ class ProductCard extends StatelessWidget {
               ],
             ),
             Align(
-              alignment: Alignment.bottomRight,
+              alignment: Alignment.topRight,
               child: IconButton(
                 icon: Icon(
                   isLiked ? Icons.favorite : Icons.favorite_border,

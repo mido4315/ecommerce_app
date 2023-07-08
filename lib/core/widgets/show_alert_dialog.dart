@@ -16,7 +16,7 @@ showAlertDialog({
 
   AlertDialog alertDialog = AlertDialog(
     title: Text(txtHead),
-    content: Text(txtMsg),
+    content: txtMsg == '' ? null : Text(txtMsg),
     actions: [
       cancelButton,
       okButton,
